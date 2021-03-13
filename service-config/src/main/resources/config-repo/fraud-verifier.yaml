@@ -1,0 +1,10 @@
+server.port: 8080
+management.server.port: 8180
+
+spring:
+  application.name: fraud-verifier
+
+---
+spring.config.activate.on-profile: local
+server.port: 8081
+management.server.port: 8081

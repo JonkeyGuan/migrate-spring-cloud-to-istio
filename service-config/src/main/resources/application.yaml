@@ -1,0 +1,34 @@
+server.port: 8888
+management.server.port: 8988
+
+management.endpoints:
+  web.exposure.include: "*"
+  health.show-details: "always"
+
+spring:
+  application.name: service-config
+  profiles.active: local,native
+  boot.admin.client:
+    url: "http://admin:8080"
+    auto-deregistration: true
+    register-once: false
+    instance.prefer-ip: true
+            
+---
+spring:
+  config.activate.on-profile: native
+  cloud.config.server.native.search-locations: classpath:/config-repo
+
+---
+spring:
+  config.activate.on-profile: local
+  boot.admin.client.url: "http://localhost:8085"
+
+---
+spring:
+  config.activate.on-profile: openshift
+  cloud.config.server.git:
+    uri: https://github.com/JonkeyGuan/migrate-spring-cloud-to-istio
+    search-paths: service-config/src/main/resources/config-repo
+    default-label: master
+    skipSslValidation: true

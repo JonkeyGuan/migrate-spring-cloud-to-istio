@@ -1,0 +1,23 @@
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - env:
+            - name: JAVA_OPTIONS
+              value: "-Dspring.profiles.active=openshift -Dspring.cloud.config.uri=http://service-config:8888/"
+            - name: AB_JOLOKIA_OFF
+              value: "true"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8180
+              scheme: HTTP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8180
+              scheme: HTTP

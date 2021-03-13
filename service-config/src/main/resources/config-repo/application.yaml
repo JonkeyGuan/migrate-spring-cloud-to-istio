@@ -1,0 +1,22 @@
+management:
+  endpoints:
+    web.exposure.include: "*"
+    health.show-details: "always"
+
+spring.boot.admin.client:
+  url: http://admin:8080
+  auto-deregistration: true
+  register-once: false
+  instance.prefer-ip: true
+
+fraudverify.base.url: "http://fraud-verifier:8080"
+userservice.base.url: "http://user-service:8080"
+cardservice.base.url: "http://card-service:8080"
+
+---
+spring.config.activate.on-profile: local
+spring.boot.admin.client.url: "http://localhost:8085"
+
+fraudverify.base.url: "http://localhost:8081"
+userservice.base.url: "http://localhost:8082"
+cardservice.base.url: "http://localhost:8083"

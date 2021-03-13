@@ -1,0 +1,10 @@
+server.port: 8080
+management.server.port: 8180
+
+spring:
+  application.name: card-service
+
+---
+spring.config.activate.on-profile: local
+server.port: 8083
+management.server.port: 8083

@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: admin
+spec:
+  hosts:
+    - "admin.sm.apps.ocp.example.com"
+    - "admin"
+  gateways:
+    - admin
+  http:
+    - route:
+        - destination:
+            host: admin
+            port:
+              number: 8080

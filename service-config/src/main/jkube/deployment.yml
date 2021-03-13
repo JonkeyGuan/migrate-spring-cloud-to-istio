@@ -1,0 +1,27 @@
+spec:
+  replicas: 2
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - env:
+            - name: JAVA_OPTIONS
+              value: "-Dspring.profiles.active=native"
+            - name: AB_JOLOKIA_OFF
+              value: "true"
+          ports:
+          - containerPort: 8888
+            name: service
+            protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8988
+              scheme: HTTP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8988
+              scheme: HTTP

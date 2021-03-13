@@ -1,0 +1,13 @@
+server.port: 8080
+management.server.port: 8180
+
+spring:
+  application.name: admin
+  boot.admin.client.url: http://localhost:8080
+
+---
+spring:
+  config.activate.on-profile: local
+  boot.admin.client.url: http://localhost:8085
+server.port: 8085
+management.server.port: 8085

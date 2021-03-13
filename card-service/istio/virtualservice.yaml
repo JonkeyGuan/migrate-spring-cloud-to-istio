@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: card-service
+spec:
+  hosts:
+    - "card.sm.apps.ocp.example.com"
+  gateways:
+    - card
+  http:
+    - route:
+        - destination:
+            host: card-service
+            port:
+              number: 8080
