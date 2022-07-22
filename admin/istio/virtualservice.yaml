@@ -4,7 +4,7 @@ metadata:
   name: admin
 spec:
   hosts:
-    - "admin.sm.apps.ocp.example.com"
+    - "admin.sm.apps.ocp1.example.com"
     - "admin"
   gateways:
     - admin

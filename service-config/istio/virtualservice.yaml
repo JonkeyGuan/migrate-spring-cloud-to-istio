@@ -4,7 +4,7 @@ metadata:
   name: config
 spec:
   hosts:
-    - "config.sm.apps.ocp.example.com"
+    - "config.sm.apps.ocp1.example.com"
     - "service-config"
   gateways:
     - config
