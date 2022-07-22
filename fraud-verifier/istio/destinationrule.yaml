@@ -6,7 +6,8 @@ spec:
   host: fraud-verifier
   trafficPolicy:
     outlierDetection:
-      consecutiveErrors: 1
+      consecutive5xxErrors: 1
+      consecutiveGatewayErrors: 1
       interval: 1s
       baseEjectionTime: 1m
       maxEjectionPercent: 100
